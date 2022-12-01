@@ -1,0 +1,1 @@
+strimage_test(1);
