@@ -1,0 +1,1 @@
+data = csvread("./ex6Data/ex6Data.csv");
