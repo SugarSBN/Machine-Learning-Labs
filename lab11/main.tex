@@ -1,0 +1,164 @@
+\documentclass{article}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\usepackage{geometry}
+\usepackage{CTEX}
+\geometry{papersize={21cm,29.7cm}}
+\geometry{left=3.18cm,right=3.18cm,top=2.54cm,bottom=2.54cm}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\pagestyle{fancy}
+\lhead{学号:202000460020}
+\rhead{姓名:苏博南}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headwidth}{\textwidth}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows}
+\usepackage{listings}
+\usepackage{float}
+\lstset{
+	basicstyle=\small\ttfamily,	% 基本样式
+		keywordstyle=\color{blue}, % 关键词样式
+		commentstyle=\color{gray!50!black!50},   	% 注释样式
+		stringstyle=\rmfamily\slshape\color{red}, 	% 字符串样式
+	backgroundcolor=\color{gray!0},     % 代码块背景颜色
+	frame=leftline,						% 代码框形状
+	framerule=12pt,%
+		rulecolor=\color{gray!0},      % 代码框颜色
+	numbers=left,				% 左侧显示行号往左靠, 还可以为right ，或none，即不加行号
+		numberstyle=\footnotesize\itshape,	% 行号的样式
+		firstnumber=1,
+		stepnumber=1,                  	% 若设置为2，则显示行号为1,3,5
+		numbersep=7pt,               	% 行号与代码之间的间距
+	aboveskip=.25em, 			% 代码块边框
+	showspaces=false,               	% 显示添加特定下划线的空格
+	showstringspaces=false,         	% 不显示代码字符串中间的空格标记
+	keepspaces=true, 					
+	showtabs=false,                 	% 在字符串中显示制表符
+	tabsize=2,                     		% 默认缩进2个字符
+	captionpos=b,                   	% 将标题位置设置为底部
+	flexiblecolumns=true, 			%
+	breaklines=true,                	% 设置自动断行
+	breakatwhitespace=false,        	% 设置自动中断是否只发生在空格处
+	breakautoindent=true,			%
+	breakindent=1em, 			%
+	title=\lstname,				%
+	escapeinside=``,  			% 在``里显示中文
+	xleftmargin=1em,  xrightmargin=1em,     % 设定listing左右的空白
+	aboveskip=1ex, belowskip=1ex,
+	framextopmargin=1pt, framexbottommargin=1pt,
+        abovecaptionskip=-2pt,belowcaptionskip=3pt,
+	% 设定中文冲突，断行，列模式，数学环境输入，listing数字的样式
+	extendedchars=false, columns=flexible, mathescape=true,
+	texcl=true,
+	fontadjust
+}%
+\newtheorem{question}{题目}  
+\lstset{
+	basicstyle=\small\ttfamily,	% 基本样式
+		keywordstyle=\color{blue}, % 关键词样式
+		commentstyle=\color{gray!50!black!50},   	% 注释样式
+		stringstyle=\rmfamily\slshape\color{red}, 	% 字符串样式
+	backgroundcolor=\color{gray!0},     % 代码块背景颜色
+	frame=leftline,						% 代码框形状
+	framerule=12pt,%
+		rulecolor=\color{gray!0},      % 代码框颜色
+	numbers=left,				% 左侧显示行号往左靠, 还可以为right ，或none，即不加行号
+		numberstyle=\footnotesize\itshape,	% 行号的样式
+		firstnumber=1,
+		stepnumber=1,                  	% 若设置为2，则显示行号为1,3,5
+		numbersep=7pt,               	% 行号与代码之间的间距
+	aboveskip=.25em, 			% 代码块边框
+	showspaces=false,               	% 显示添加特定下划线的空格
+	showstringspaces=false,         	% 不显示代码字符串中间的空格标记
+	keepspaces=true, 					
+	showtabs=false,                 	% 在字符串中显示制表符
+	tabsize=2,                     		% 默认缩进2个字符
+	captionpos=b,                   	% 将标题位置设置为底部
+	flexiblecolumns=true, 			%
+	breaklines=true,                	% 设置自动断行
+	breakatwhitespace=false,        	% 设置自动中断是否只发生在空格处
+	breakautoindent=true,			%
+	breakindent=1em, 			%
+	title=\lstname,				%
+	escapeinside=``,  			% 在``里显示中文
+	xleftmargin=1em,  xrightmargin=1em,     % 设定listing左右的空白
+	aboveskip=1ex, belowskip=1ex,
+	framextopmargin=1pt, framexbottommargin=1pt,
+        abovecaptionskip=-2pt,belowcaptionskip=3pt,
+	% 设定中文冲突，断行，列模式，数学环境输入，listing数字的样式
+	extendedchars=false, columns=flexible, mathescape=true,
+	texcl=true,
+	fontadjust
+}%
+
+\begin{document}
+
+\begin{center}
+    \huge{机器学习课程实验十}\\
+    \large{\today \quad 苏博南\quad 202000460020}
+\end{center}
+
+不是很清楚这个实验有啥好写的，把代码跑一遍，结果看一看好了，反之实现都是import一步到位（。
+首先是数据集打印：
+\begin{lstlisting}[language=Python]
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import seaborn as sns; sns.set()
+
+    from sklearn.datasets import make_blobs
+
+    X, y = make_blobs(n_samples = 300, centers = 4, random_state = 0, cluster_std = 1.0)
+    plt.scatter(X[:, 0], X[:, 1], c = y, s = 50, cmap = 'rainbow')
+    plt.show()
+\end{lstlisting}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{1.png}
+\end{figure}
+
+然后import一步到位作出决策树：
+\begin{lstlisting}[language=Python]
+    from sklearn.tree import DecisionTreeClassifier
+    tree = DecisionTreeClassifier().fit(X, y)
+    visualize_classifier(DecisionTreeClassifier(), X, y)
+\end{lstlisting}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{2.png}
+\end{figure}
+
+然后会发现有overfitting的现象，譬如紫色区域里就会有一条很细很细的青色线。
+然后为了求得稳定性和减少过拟合线性，可以考虑使用bagging算法，即用多个弱分类算法进行
+投票。import下又可以一步到位：
+\begin{lstlisting}[language=Python]
+    from sklearn.ensemble import BaggingClassifier
+    from sklearn.ensemble import RandomForestClassifier
+
+    bag = BaggingClassifier(tree, n_estimators = 100, max_samples = 0.8, random_state = 1)
+    bag.fit(X, y)
+    visualize_classifier(bag, X, y)
+    plt.show()
+\end{lstlisting}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{3.png}
+\end{figure}
+
+最后为了提高分类边界的精确度，可以考虑使用random forest算法，即在bagging算法的基础上
+使用多个决策树：
+\begin{lstlisting}[language=Python]
+    from sklearn.ensemble import RandomForestClassifier
+    model = RandomForestClassifier(n_estimators = 100, random_state = 0)
+    visualize_classifier(model, X, y)
+    plt.show()
+\end{lstlisting}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{4.png}
+\end{figure}
+\end{document}
