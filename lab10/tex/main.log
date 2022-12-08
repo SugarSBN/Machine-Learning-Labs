@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2022.1.24)  1 DEC 2022 17:04
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2022.1.24)  7 DEC 2022 11:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -737,7 +737,7 @@ Package fontspec Info: Font family 'FandolFang-Regular(0)' created for font
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/sl' in size <9.03374> not available
-(Font)              Font shape `TU/TimesNewRoman(0)/m/it' tried instead on input line 238.
+(Font)              Font shape `TU/TimesNewRoman(0)/m/it' tried instead on input line 246.
 [3]
 File: 1.png Graphic file (type bmp)
 <1.png>
@@ -752,19 +752,23 @@ File: 7.png Graphic file (type bmp)
  [6] [7] [8]
 File: 3.png Graphic file (type bmp)
 <3.png>
- [9] (./main.aux)
+File: 9.png Graphic file (type bmp)
+<9.png>
+File: 8.png Graphic file (type bmp)
+<8.png>
+ [9] [10] (./main.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.41063pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 20890 strings out of 476919
- 479716 string characters out of 5825424
- 1299505 words of memory out of 5000000
- 40497 multiletter control sequences out of 15000+600000
+ 20902 strings out of 476919
+ 479800 string characters out of 5825424
+ 1299517 words of memory out of 5000000
+ 40507 multiletter control sequences out of 15000+600000
  405384 words of font info for 78 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  113i,19n,116p,436b,1624s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.pdf (9 pages).
+Output written on main.pdf (10 pages).

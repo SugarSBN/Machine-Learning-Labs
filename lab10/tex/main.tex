@@ -96,7 +96,7 @@
 \begin{document}
 
 \begin{center}
-    \huge{机器学习课程实验十}\\
+    \huge{机器学习课程实验五}\\
     \large{\today \quad 苏博南\quad 202000460020}
 \end{center}
 \section{Linear Support Vector Machine(SVM)}
@@ -167,14 +167,22 @@
 因为$\alpha_i\geq 0$，然后它乘的$[1-y_i(\textbf{w}'\textbf{x}_i+b')]\leq 0$，所以$\alpha_i\equiv 0$时取得最大值。
 然后重点是：
 \begin{equation}
-	\mathop{min}\limits_{\textbf{w}'}f(\textbf{w}')=\mathop{min}\limits_{\textbf{w}'}\;\mathop{max}\limits_{\alpha_i\geq 0}\mathcal{L}(\textbf{w}',b',\overrightarrow{\alpha})\geq \mathop{max}\limits_{\alpha_i\geq 0}\;\mathop{min}\limits_{\textbf{w}'}\mathcal{L}(\textbf{w}',b',\overrightarrow{\alpha})
+	\mathop{min}\limits_{\textbf{w}',b'}f(\textbf{w}')=\mathop{min}\limits_{\textbf{w}',b'}\;\mathop{max}\limits_{\alpha_i\geq 0}\mathcal{L}(\textbf{w}',b',\overrightarrow{\alpha})\geq \mathop{max}\limits_{\alpha_i\geq 0}\;\mathop{min}\limits_{\textbf{w}',b'}\mathcal{L}(\textbf{w}',b',\overrightarrow{\alpha})
 \end{equation}
 
-因为\textbf{最小值的最大值永远小于等于最大值的最小值}。根据规划问题的对偶性，如果原问题有最优解的话，上述等号可以取等。具体可参考Karush-Kuhn-Tucker(KKT)条件。
+因为\textbf{最小值的最大值永远小于等于最大值的最小值}:
+\begin{equation}
+	\begin{aligned}
+		& \mathop{min}\limits_{\textbf{w}',b'}\mathcal{L}(\textbf{w}',b',\overrightarrow{\alpha})\leq\mathcal{L}(\textbf{w}',b',\overrightarrow{\alpha})\leq\mathop{max}\limits_{\alpha_i\geq 0}\mathcal{L}(\textbf{w}',b',\overrightarrow{\alpha})\\
+		\Rightarrow & \mathop{max}\limits_{\alpha_i\geq 0}LHS\leq \mathop{min}\limits_{\textbf{w}',b'}RHS
+	\end{aligned}
+\end{equation}
+
+根据规划问题的对偶性，如果原问题有最优解的话，上述等号可以取等。具体可参考Karush-Kuhn-Tucker(KKT)条件。
 于是原问题转化为：
 \begin{equation}
 	\begin{aligned}
-		& \mathop{max}\limits_{\alpha_i\geq 0}\;\mathop{min}\limits_{\textbf{w}'}\mathcal{L}(\textbf{w}',b',\overrightarrow{\alpha})\\
+		& \mathop{max}\limits_{\alpha_i\geq 0}\;\mathop{min}\limits_{\textbf{w}',b'}\mathcal{L}(\textbf{w}',b',\overrightarrow{\alpha})\\
 		& s.t.\;\alpha\geq 0
 	\end{aligned}
 \end{equation}
@@ -182,7 +190,7 @@
 然后就可以进一步化简，有：
 \begin{equation}
 	\begin{aligned}
-		& \mathop{min}\limits_{\textbf{w}'}\mathcal{L}(\textbf{w}',b',\overrightarrow{\alpha})\mbox{可以直接求解：}\\
+		& \mathop{min}\limits_{\textbf{w}',b'}\mathcal{L}(\textbf{w}',b',\overrightarrow{\alpha})\mbox{可以直接求解：}\\
 		& \begin{cases}
 			\frac{\partial\mathcal{L}}{\textbf{w}'}=0\Rightarrow \textbf{w}'=\sum_{i=1}^m\alpha_iy_i\textbf{x}_i\\
 			\frac{\partial\mathcal{L}}{b'}=0\Rightarrow 0=\sum_{i=1}^m\alpha_iy_i\\
@@ -450,5 +458,19 @@
 \end{figure}
 
 等高线圈起来的我画的是值为-20到0的范围。可以看到这些等高线在分界处很好地把-1类的数据点圈进去了，然后把+1类点丢在外面。
+实验文档还问了当核函数为$K(\textbf{x}_i,\textbf{x}_j)=exp(-1\times||\textbf{x}_i-\textbf{x}_j||^2), K(\textbf{x}_i,\textbf{x}_j)=exp(-10\times||\textbf{x}_i-\textbf{x}_j||^2),K(\textbf{x}_i,\textbf{x}_j)=exp(-1000\times||\textbf{x}_i-\textbf{x}_j||^2)$时的情况。
+
+$K(\textbf{x}_i,\textbf{x}_j)=exp(-10\times||\textbf{x}_i-\textbf{x}_j||^2)$时：
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{9.png}
+\end{figure}
+$K(\textbf{x}_i,\textbf{x}_j)=exp(-1000\times||\textbf{x}_i-\textbf{x}_j||^2)$时：
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{8.png}
+\end{figure}
+
+感觉还是$K(\textbf{x}_i,\textbf{x}_j)=exp(-100\times||\textbf{x}_i-\textbf{x}_j||^2)$效果最好。常数太大太小都会使得数据集的特征值趋近于相同，导致分类效果差。
 
 \end{document}

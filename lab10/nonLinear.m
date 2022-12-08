@@ -12,7 +12,7 @@ alpha = optimvar("alpha", size(X, 1), 1, 'LowerBound', 0);
 K = zeros(size(X, 1), size(X, 1));
 for i = 1 : size(X, 1)
     for j = 1 : size(X, 1)
-        K(i, j) = exp(-100 * norm(X(i, :) - X(j, :))^2);
+        K(i, j) = exp(-10 * norm(X(i, :) - X(j, :))^2);
     end
 end
 tmp = (Y * Y') .* (alpha * alpha') .* K;
